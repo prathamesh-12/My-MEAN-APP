@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PageEvent } from "@angular/material";
 
@@ -38,6 +38,8 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.authStatusSubscription = this._authService.getUserAuthStatus().subscribe(isAuthFlag => {
       this.isAuthenticated = isAuthFlag;
     })
+
+    this.isAuthenticated = this._authService.checkIfUserIsAuthenticated();
   }
 
   onPageChanged(pageEvent: PageEvent) {

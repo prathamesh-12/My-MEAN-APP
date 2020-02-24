@@ -17,12 +17,19 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm) {
+    this.isLoading = true;
     const userObj = {
       email: form.value.email,
       password: form.value.password
     };
 
     this._authService.login(userObj);
+
+    this._authService.getUserAuthStatus().subscribe(resp => {
+      this.isLoading = resp;
+    })
+
+    
   }
 
 }

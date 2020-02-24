@@ -29,6 +29,11 @@ export class SignupComponent implements OnInit {
     } 
 
     this._authService.signUp(user);
+
+    this._authService.getUserCreationStatus().subscribe(isUserCreated => {
+      console.log(isUserCreated);
+      this.isLoading = isUserCreated;
+    })
   }
 
 }
