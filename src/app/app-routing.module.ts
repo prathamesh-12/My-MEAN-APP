@@ -6,6 +6,7 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { LoginComponent } from "./auth/login/login/login.component";
 import { SignupComponent } from "./auth/signup/signup/signup.component";
 import { AuthGuard } from "./auth/auth.guard";
+import { ResetPasswordComponent } from "./auth/login/reset-password/reset-password.component";
 
 const routes: Routes = [
   { path: '', component: PostListComponent, pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   { path: '**', redirectTo: '/' }
 ];
 

@@ -21,6 +21,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from './auth/login/login/login.component';
 import { SignupComponent } from './auth/signup/signup/signup.component';
 import { AuthInterceptor } from "./auth/auth.interceptor";
+import { ResetPasswordComponent } from './auth/login/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthInterceptor } from "./auth/auth.interceptor";
     HeaderComponent,
     PostListComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

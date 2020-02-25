@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   isLoading: boolean = false;
 
-  constructor( private _authService: AuthService ) { }
+  constructor( private _authService: AuthService, private _router: Router ) { }
 
   ngOnInit() {
   }
@@ -28,8 +30,10 @@ export class LoginComponent implements OnInit {
     this._authService.getUserAuthStatus().subscribe(resp => {
       this.isLoading = resp;
     })
+  }
 
-    
+  onResetPassword() {
+    this._router.navigate(['/reset-password']);
   }
 
 }
