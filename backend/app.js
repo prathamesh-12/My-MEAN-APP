@@ -11,7 +11,7 @@ const app = express();
 const MONGO_MLAB_URL = 'mongodb://prathamesh1209:Pa55w0rd@ds149577.mlab.com:49577/mean-blogs-app';
 const MONGO_LOCAL_URL = "mongodb://localhost:27017/Blogs-App";
 
-mongoose.connect(MONGO_LOCAL_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(MONGO_MLAB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => {
     console.log("Connected to database!");
   })
