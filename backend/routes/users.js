@@ -50,12 +50,7 @@ router.post('/login', (req, res, next) => {
                 })
             }
 
-            const token = jwt.sign({
-                email: fetchedUser.email,
-                id: fetchedUser._id
-            }, 'aa_11_bb_22_cc_33_abc_123_xyz_678_hello_secret', {
-                expiresIn: '0.5h'
-            })
+            const token = getToken(fetchedUser)
 
             res.status(200).json({
                 token: token,
@@ -65,6 +60,30 @@ router.post('/login', (req, res, next) => {
         })
         .catch(err => console.log(err))
 
+})
+
+const getToken = (fetchedUser) => {
+    return jwt.sign({
+        email: fetchedUser.email,
+        id: fetchedUser._id
+    }, 'aa_11_bb_22_cc_33_abc_123_xyz_678_hello_secret', {
+        expiresIn: '0.5h'
+    })
+}
+
+router.post('/reset-password', (req, res, next) => {
+    const email = req.body.email;
+
+    User.findOne({ email: email })
+        .then(user => {
+            if(!user) {
+                res.status(404).json({
+                    message: 'User Not Found'
+                })
+            }
+            const token = getToken(user);
+        })
+        .catch(err => console.log(err))
 })
 
 module.exports = router;
